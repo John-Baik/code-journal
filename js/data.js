@@ -7,7 +7,7 @@ var data = {
   nextEntryId: 1
 };
 
-var previousEntriesJSON = localStorage.getItem('javascript-local-storage');
+var previousEntriesJSON = localStorage.getItem('code-journal-data');
 
 if (previousEntriesJSON !== null) {
   data = JSON.parse(previousEntriesJSON);
@@ -15,5 +15,5 @@ if (previousEntriesJSON !== null) {
 
 window.addEventListener('beforeunload', function (event) {
   var storage = JSON.stringify(data);
-  localStorage.setItem('javascript-local-storage', storage);
+  localStorage.setItem('code-journal-data', storage);
 });
