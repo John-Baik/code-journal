@@ -23,6 +23,4 @@ form.addEventListener('submit', function (event) {
   data.entries.unshift(object);
   journalForm.reset();
   upload.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var storage = JSON.stringify(data.entries);
-  localStorage.setItem('javascript-local-storage', storage);
 });
