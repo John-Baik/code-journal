@@ -78,3 +78,14 @@ textarea {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
+
+
+
+/* entries */
+ul {
+  padding: 0;
+}
+
+.entry-title {
+  margin: 0;
+}
