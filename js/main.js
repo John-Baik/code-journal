@@ -1,11 +1,11 @@
 /* global data */
 /* exported data */
 var journalForm = document.querySelector('#journal');
-
 var entries = document.querySelector('ul');
 var upload = document.getElementById('upload');
 var photo = document.getElementById('photo');
 var form = document.forms[0];
+var entryHeader = document.querySelector('a');
 
 photo.addEventListener('input', function (event) {
   upload.setAttribute('src', event.target.value);
@@ -57,4 +57,19 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     entries.appendChild(renderEntries(data.entries[i]));
   }
+});
+
+var idContainer = document.querySelector('#container');
+var noEntries = document.querySelector('.no-entries');
+var entriesTab = document.querySelector('.hidden');
+
+entryHeader.addEventListener('click', function (event) {
+  idContainer.className = 'hidden';
+  entriesTab.className = 'container';
+  if (data.nextEntryId === 1) {
+    noEntries.className = 'active';
+  } else {
+    noEntries.className = 'hidden';
+  }
+
 });

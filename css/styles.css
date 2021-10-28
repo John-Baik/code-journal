@@ -76,4 +76,19 @@ body {
   font-size: 1.5rem;
   font-weight: 800;
 }
+
+.hidden {
+  display: none;
+}
+
+.nothing {
+  display: flex;
+  justify-content: center;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
