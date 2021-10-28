@@ -8,12 +8,19 @@ body {
 }
 
 .header-title {
-  margin: 0;
-  padding: 1.5rem 0;
+  padding-left: 1.5rem;
   color: white;
   font-family: "Prova Libre", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
+  display: flex;
+}
+
+.entries-header {
+  font-family: "Prova Libre", sans-serif;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
 }
 
 .body {
@@ -68,4 +75,5 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
+}
 }
