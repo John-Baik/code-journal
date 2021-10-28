@@ -42,7 +42,7 @@ function renderEntries(entry) {
   var info = document.createElement('div');
   info.setAttribute('class', 'info');
   var infoText = document.createElement('p');
-  infoText.textConent = entry.notesInput;
+  infoText.textContent = entry.notesInput;
   li.appendChild(colHalf);
   colHalf.appendChild(image);
   li.appendChild(colHalf2);
