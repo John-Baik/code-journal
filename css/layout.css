@@ -35,7 +35,7 @@
 
 
 /* Header */
-.entries-header {
+#entries-header {
   display: flex;
   align-items: center;
   padding-left: 1.5rem;
@@ -88,6 +88,22 @@ textarea {
 
 
 /* entries */
+.entries-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.new-button {
+  width: 5rem;
+}
+
+#new {
+  display: flex;
+  align-items: center;
+}
+
 ul {
   padding: 0;
 }

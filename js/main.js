@@ -5,7 +5,7 @@ var entries = document.querySelector('ul');
 var upload = document.getElementById('upload');
 var photo = document.getElementById('photo');
 var form = document.forms[0];
-var entryHeader = document.querySelector('a');
+var entryHeader = document.getElementById('entries-header');
 
 photo.addEventListener('input', function (event) {
   upload.setAttribute('src', event.target.value);
@@ -24,6 +24,7 @@ form.addEventListener('submit', function (event) {
   data.entries.unshift(object);
   journalForm.reset();
   upload.setAttribute('src', 'images/placeholder-image-square.jpg');
+  entries.prepend(renderEntries(object));
 });
 
 function renderEntries(entry) {
@@ -59,17 +60,23 @@ window.addEventListener('DOMContentLoaded', function (event) {
   }
 });
 
-var idContainer = document.querySelector('#container');
 var noEntries = document.querySelector('.no-entries');
-var entriesTab = document.querySelector('.hidden');
+var entriesTab = document.getElementById('entries-data-view');
+var entryForm = document.getElementById('entry-form-active');
 
 entryHeader.addEventListener('click', function (event) {
-  idContainer.className = 'hidden';
+  entryForm.className = 'hidden';
   entriesTab.className = 'container';
   if (data.nextEntryId === 1) {
     noEntries.className = 'active';
   } else {
     noEntries.className = 'hidden';
   }
+});
 
+var switchView = document.getElementById('new');
+
+switchView.addEventListener('click', function (event) {
+  entryForm.className = 'active';
+  entriesTab.className = 'hidden';
 });
