@@ -85,3 +85,10 @@ switchView.addEventListener('click', function (event) {
   entryForm.className = 'active';
   entriesTab.className = 'hidden';
 });
+
+entries.addEventListener('click', function (event) {
+  if (event.target && event.target.tagName === 'I') {
+    entryForm.className = 'active';
+    entriesTab.className = 'hidden';
+  }
+});
