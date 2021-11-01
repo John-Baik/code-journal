@@ -53,6 +53,9 @@ img {
 
 .body-title {
   margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .row.column-half {

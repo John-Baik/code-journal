@@ -40,6 +40,9 @@ function renderEntries(entry) {
   bodyTitle.setAttribute('class', 'body-title');
   var h2 = document.createElement('h2');
   h2.setAttribute('class', 'entry-title');
+  h2.textContent = entry.titleInput;
+  var pen = document.createElement('i');
+  pen.setAttribute('class', 'fas fa-pen');
   var info = document.createElement('div');
   info.setAttribute('class', 'info');
   var infoText = document.createElement('p');
@@ -49,6 +52,7 @@ function renderEntries(entry) {
   li.appendChild(colHalf2);
   colHalf2.appendChild(bodyTitle);
   bodyTitle.appendChild(h2);
+  bodyTitle.appendChild(pen);
   colHalf2.appendChild(info);
   info.appendChild(infoText);
   return li;
