@@ -41,11 +41,9 @@ function renderEntries(entry) {
   var h2 = document.createElement('h2');
   h2.setAttribute('class', 'entry-title');
   h2.textContent = entry.titleInput;
-
   var pen = document.createElement('i');
   pen.setAttribute('class', 'fas fa-pen');
   pen.setAttribute('data-entry-id', entry.entryId);
-
   var info = document.createElement('div');
   info.setAttribute('class', 'info');
   var infoText = document.createElement('p');
