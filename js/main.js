@@ -20,11 +20,23 @@ form.addEventListener('submit', function (event) {
   object.titleInput = titleValue;
   object.photoInput = photoValue;
   object.notesInput = notesValue;
-  object.entryId = data.nextEntryId++;
-  data.entries.unshift(object);
-  journalForm.reset();
+  if (data.editing) {
+    object.entryId = data.editing.entryId;
+  } else {
+    object.entryId = data.nextEntryId++;
+    data.entries.unshift(object);
+  }
   upload.setAttribute('src', 'images/placeholder-image-square.jpg');
-  entries.prepend(renderEntries(object));
+  if (data.editing) {
+    for (var u = 0; u < data.entries.length; u++) {
+      if (data.entries[u].entryId === data.editing.entryId) {
+        data.entries[u] = object;
+      }
+    }
+  } else {
+    entries.prepend(renderEntries(object));
+  }
+  journalForm.reset();
 });
 
 function renderEntries(entry) {
