@@ -86,9 +86,21 @@ switchView.addEventListener('click', function (event) {
   entriesTab.className = 'hidden';
 });
 
+var titleEdit = document.getElementById('title');
+var photoEdit = document.getElementById('photo');
+var notesEdit = document.getElementById('notes');
+
 entries.addEventListener('click', function (event) {
   if (event.target && event.target.tagName === 'I') {
     entryForm.className = 'active';
     entriesTab.className = 'hidden';
+    for (var e = 0; e < data.entries.length; e++) {
+      if (data.entries[e].entryId === parseInt(event.target.getAttribute('data-entry-id'))) {
+        titleEdit.value = data.entries[e].titleInput;
+        photoEdit.value = data.entries[e].photoInput;
+        notesEdit.textContent = data.entries[e].notesInput;
+        data.editing = data.entries[e];
+      }
+    }
   }
 });
