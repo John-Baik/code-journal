@@ -7,14 +7,13 @@ var photo = document.getElementById('photo');
 var form = document.forms[0];
 var entryHeader = document.getElementById('entries-header');
 var header = document.querySelector('.entry');
-
 var noEntries = document.querySelector('.no-entries');
 var entriesTab = document.getElementById('entries-data-view');
 var entryForm = document.getElementById('entry-form-active');
-
 var titleEdit = document.getElementById('title');
 var photoEdit = document.getElementById('photo');
 var notesEdit = document.getElementById('notes');
+var remove = document.getElementById('delete');
 
 photo.addEventListener('input', function (event) {
   upload.setAttribute('src', event.target.value);
@@ -55,6 +54,7 @@ form.addEventListener('submit', function (event) {
   entriesTab.className = 'active';
   noEntries.className = 'hidden';
   header.textContent = 'New Entry';
+  remove.className = 'invisible';
 });
 
 function renderEntries(entry) {
@@ -124,6 +124,7 @@ entries.addEventListener('click', function (event) {
         photoEdit.value = data.entries[e].photoInput;
         notesEdit.textContent = data.entries[e].notesInput;
         data.editing = data.entries[e];
+        remove.className = 'visible';
       }
     }
   }

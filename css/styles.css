@@ -107,3 +107,9 @@ body {
 i {
   color: #532e83;
 }
+
+#delete {
+  font-family: "Prova Libre", sans-serif;
+  color: red;
+  text-decoration: underline;
+}
