@@ -8,12 +8,19 @@ body {
 }
 
 .header-title {
-  margin: 0;
-  padding: 1.5rem 0;
+  padding-left: 1.5rem;
   color: white;
   font-family: "Prova Libre", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
+  display: flex;
+}
+
+#entries-header {
+  font-family: "Prova Libre", sans-serif;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
 }
 
 .body {
@@ -25,7 +32,7 @@ body {
 
 .body-text {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 800;
 }
 
@@ -60,4 +67,39 @@ body {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+}
+
+
+/* #2 */
+.entry-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+#new {
+  justify-content: center;
+  border: solid;
+  color: white;
+  background-color: #532e83;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
+  padding: 4px 2px;
+  font-size: 1.2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.nothing {
+  display: flex;
+  justify-content: center;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }

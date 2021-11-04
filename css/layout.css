@@ -34,10 +34,17 @@
 }
 
 
+/* Header */
+#entries-header {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+}
 
 /* Body */
 img {
   width: 100%;
+  margin-bottom: 2.3rem;
 }
 
 .body {
@@ -75,6 +82,32 @@ textarea {
 }
 
 .notes-title {
-  margin-top: 2rem;
   margin-bottom: 0.5rem;
+}
+
+
+
+/* entries */
+.entries-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.new-button {
+  width: 5rem;
+}
+
+#new {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  padding: 0;
+}
+
+.entry-title {
+  margin: 0;
 }
