@@ -6,6 +6,7 @@ var upload = document.getElementById('upload');
 var photo = document.getElementById('photo');
 var form = document.forms[0];
 var entryHeader = document.getElementById('entries-header');
+var header = document.querySelector('.entry');
 
 photo.addEventListener('input', function (event) {
   upload.setAttribute('src', event.target.value);
@@ -39,6 +40,7 @@ form.addEventListener('submit', function (event) {
     entries.prepend(renderEntries(object));
   }
   journalForm.reset();
+  header.textContent = 'New Entry';
 });
 
 function renderEntries(entry) {
@@ -109,6 +111,7 @@ entries.addEventListener('click', function (event) {
   if (event.target && event.target.tagName === 'I') {
     entryForm.className = 'active';
     entriesTab.className = 'hidden';
+    header.textContent = 'Edit Entry';
     for (var e = 0; e < data.entries.length; e++) {
       if (data.entries[e].entryId === parseInt(event.target.getAttribute('data-entry-id'))) {
         titleEdit.value = data.entries[e].titleInput;
