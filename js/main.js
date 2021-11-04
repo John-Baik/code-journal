@@ -35,6 +35,8 @@ form.addEventListener('submit', function (event) {
         data.entries[u] = object;
       }
       entries.append(renderEntries(data.entries[u]));
+      entryForm.className = 'hidden';
+      entriesTab.className = 'active';
     }
   } else {
     entries.prepend(renderEntries(object));
