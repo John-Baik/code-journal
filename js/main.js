@@ -8,6 +8,14 @@ var form = document.forms[0];
 var entryHeader = document.getElementById('entries-header');
 var header = document.querySelector('.entry');
 
+var noEntries = document.querySelector('.no-entries');
+var entriesTab = document.getElementById('entries-data-view');
+var entryForm = document.getElementById('entry-form-active');
+
+var titleEdit = document.getElementById('title');
+var photoEdit = document.getElementById('photo');
+var notesEdit = document.getElementById('notes');
+
 photo.addEventListener('input', function (event) {
   upload.setAttribute('src', event.target.value);
 });
@@ -37,11 +45,15 @@ form.addEventListener('submit', function (event) {
       entries.append(renderEntries(data.entries[u]));
       entryForm.className = 'hidden';
       entriesTab.className = 'active';
+      noEntries.className = 'hidden';
     }
   } else {
     entries.prepend(renderEntries(object));
   }
   journalForm.reset();
+  entryForm.className = 'hidden';
+  entriesTab.className = 'active';
+  noEntries.className = 'hidden';
   header.textContent = 'New Entry';
 });
 
@@ -84,10 +96,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
   }
 });
 
-var noEntries = document.querySelector('.no-entries');
-var entriesTab = document.getElementById('entries-data-view');
-var entryForm = document.getElementById('entry-form-active');
-
 entryHeader.addEventListener('click', function (event) {
   entryForm.className = 'hidden';
   entriesTab.className = 'container';
@@ -104,10 +112,6 @@ switchView.addEventListener('click', function (event) {
   entryForm.className = 'active';
   entriesTab.className = 'hidden';
 });
-
-var titleEdit = document.getElementById('title');
-var photoEdit = document.getElementById('photo');
-var notesEdit = document.getElementById('notes');
 
 entries.addEventListener('click', function (event) {
   if (event.target && event.target.tagName === 'I') {
