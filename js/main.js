@@ -6,6 +6,15 @@ var upload = document.getElementById('upload');
 var photo = document.getElementById('photo');
 var form = document.forms[0];
 var entryHeader = document.getElementById('entries-header');
+var header = document.querySelector('.entry');
+
+var noEntries = document.querySelector('.no-entries');
+var entriesTab = document.getElementById('entries-data-view');
+var entryForm = document.getElementById('entry-form-active');
+
+var titleEdit = document.getElementById('title');
+var photoEdit = document.getElementById('photo');
+var notesEdit = document.getElementById('notes');
 
 photo.addEventListener('input', function (event) {
   upload.setAttribute('src', event.target.value);
@@ -20,16 +29,38 @@ form.addEventListener('submit', function (event) {
   object.titleInput = titleValue;
   object.photoInput = photoValue;
   object.notesInput = notesValue;
-  object.entryId = data.nextEntryId++;
-  data.entries.unshift(object);
-  journalForm.reset();
+  if (data.editing) {
+    object.entryId = data.editing.entryId;
+  } else {
+    object.entryId = data.nextEntryId++;
+    data.entries.unshift(object);
+  }
   upload.setAttribute('src', 'images/placeholder-image-square.jpg');
-  entries.prepend(renderEntries(object));
+  if (data.editing) {
+    entries.innerHTML = '';
+    for (var u = 0; u < data.entries.length; u++) {
+      if (data.entries[u].entryId === data.editing.entryId) {
+        data.entries[u] = object;
+      }
+      entries.append(renderEntries(data.entries[u]));
+      entryForm.className = 'hidden';
+      entriesTab.className = 'active';
+      noEntries.className = 'hidden';
+    }
+  } else {
+    entries.prepend(renderEntries(object));
+  }
+  journalForm.reset();
+  entryForm.className = 'hidden';
+  entriesTab.className = 'active';
+  noEntries.className = 'hidden';
+  header.textContent = 'New Entry';
 });
 
 function renderEntries(entry) {
   var li = document.createElement('li');
   li.setAttribute('class', 'row');
+  li.setAttribute('data-entry-id', entry.entryId);
   var colHalf = document.createElement('div');
   colHalf.setAttribute('class', 'column-half');
   var image = document.createElement('img');
@@ -40,6 +71,10 @@ function renderEntries(entry) {
   bodyTitle.setAttribute('class', 'body-title');
   var h2 = document.createElement('h2');
   h2.setAttribute('class', 'entry-title');
+  h2.textContent = entry.titleInput;
+  var pen = document.createElement('i');
+  pen.setAttribute('class', 'fas fa-pen');
+  pen.setAttribute('data-entry-id', entry.entryId);
   var info = document.createElement('div');
   info.setAttribute('class', 'info');
   var infoText = document.createElement('p');
@@ -49,6 +84,7 @@ function renderEntries(entry) {
   li.appendChild(colHalf2);
   colHalf2.appendChild(bodyTitle);
   bodyTitle.appendChild(h2);
+  bodyTitle.appendChild(pen);
   colHalf2.appendChild(info);
   info.appendChild(infoText);
   return li;
@@ -59,10 +95,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
     entries.appendChild(renderEntries(data.entries[i]));
   }
 });
-
-var noEntries = document.querySelector('.no-entries');
-var entriesTab = document.getElementById('entries-data-view');
-var entryForm = document.getElementById('entry-form-active');
 
 entryHeader.addEventListener('click', function (event) {
   entryForm.className = 'hidden';
@@ -79,4 +111,20 @@ var switchView = document.getElementById('new');
 switchView.addEventListener('click', function (event) {
   entryForm.className = 'active';
   entriesTab.className = 'hidden';
+});
+
+entries.addEventListener('click', function (event) {
+  if (event.target && event.target.tagName === 'I') {
+    entryForm.className = 'active';
+    entriesTab.className = 'hidden';
+    header.textContent = 'Edit Entry';
+    for (var e = 0; e < data.entries.length; e++) {
+      if (data.entries[e].entryId === parseInt(event.target.getAttribute('data-entry-id'))) {
+        titleEdit.value = data.entries[e].titleInput;
+        photoEdit.value = data.entries[e].photoInput;
+        notesEdit.textContent = data.entries[e].notesInput;
+        data.editing = data.entries[e];
+      }
+    }
+  }
 });
