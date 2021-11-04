@@ -28,10 +28,12 @@ form.addEventListener('submit', function (event) {
   }
   upload.setAttribute('src', 'images/placeholder-image-square.jpg');
   if (data.editing) {
+    entries.innerHTML = '';
     for (var u = 0; u < data.entries.length; u++) {
       if (data.entries[u].entryId === data.editing.entryId) {
         data.entries[u] = object;
       }
+      entries.append(renderEntries(data.entries[u]));
     }
   } else {
     entries.prepend(renderEntries(object));
@@ -42,6 +44,7 @@ form.addEventListener('submit', function (event) {
 function renderEntries(entry) {
   var li = document.createElement('li');
   li.setAttribute('class', 'row');
+  li.setAttribute('data-entry-id', entry.entryId);
   var colHalf = document.createElement('div');
   colHalf.setAttribute('class', 'column-half');
   var image = document.createElement('img');
