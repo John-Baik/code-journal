@@ -55,6 +55,7 @@ form.addEventListener('submit', function (event) {
   noEntries.className = 'hidden';
   header.textContent = 'New Entry';
   remove.className = 'invisible';
+  data.editing = null;
 });
 
 function renderEntries(entry) {
@@ -104,6 +105,7 @@ entryHeader.addEventListener('click', function (event) {
   } else {
     noEntries.className = 'hidden';
   }
+  data.editing = null;
 });
 
 var switchView = document.getElementById('new');
@@ -137,7 +139,21 @@ remove.addEventListener('click', function (event) {
 });
 
 var cancel = document.querySelector('.delete-cancel');
+var yes = document.querySelector('.delete-confirm');
 
 cancel.addEventListener('click', function (event) {
   deleteContainer.className = 'full hidden';
+});
+
+yes.addEventListener('click', function (event) {
+  deleteContainer.className = 'full hidden';
+  entryForm.className = 'hidden';
+  entriesTab.className = 'active';
+  entries.innerHTML = '';
+  for (var u = 0; u < data.entries.length; u++) {
+    if (data.editing.entryId === data.entries[u].entryId) {
+      data.entries.splice(u, 1);
+    }
+    entries.append(renderEntries(data.entries[u]));
+  }
 });
