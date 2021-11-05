@@ -129,3 +129,15 @@ entries.addEventListener('click', function (event) {
     }
   }
 });
+
+var deleteContainer = document.getElementById('delete-container');
+
+remove.addEventListener('click', function (event) {
+  deleteContainer.className = 'full';
+});
+
+var cancel = document.querySelector('.delete-cancel');
+
+cancel.addEventListener('click', function (event) {
+  deleteContainer.className = 'full hidden';
+});

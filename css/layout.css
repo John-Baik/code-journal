@@ -118,3 +118,32 @@ ul {
 .invisible {
   visibility: hidden;
 }
+
+.full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  position: fixed;
+}
+
+.delete-box {
+  display: flex;
+  border: solid;
+  height: 27vh;
+  width: 30vw;
+  justify-content: center;
+  background-color: white;
+  z-index: 4;
+}
+
+.delete-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.choice {
+  display: flex;
+  justify-content: space-between;
+}
