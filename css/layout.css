@@ -130,8 +130,8 @@ ul {
 .delete-box {
   display: flex;
   border: solid;
-  height: 27vh;
-  width: 30vw;
+  height: 13rem;
+  width: 33rem;
   justify-content: center;
   background-color: white;
   z-index: 4;

@@ -78,12 +78,13 @@ body {
 
 #new {
   justify-content: center;
-  border: solid;
+  border: none;
+  border-radius: 0.3rem;
   color: white;
   background-color: #532e83;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 2px;
-  padding: 4px 2px;
+  padding: 3px 1px;
   font-size: 1.2rem;
 }
 
